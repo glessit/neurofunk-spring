@@ -1,0 +1,66 @@
+group 'com.glessit.neurofunky'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+ext {
+    lombokVersion = '1.16.16'
+    slf4jVersion = '1.7.25'
+    slf4jTolog4j12 = '1.7.25'
+    luceneCoreVersion = '6.5.1'
+
+    springDataVersion = '1.11.3.RELEASE'
+    springVersion = '4.3.8.RELEASE'
+    springSecurityVersion = '4.2.2.RELEASE'
+    hibernateCoreVersion = '5.2.10.Final'
+}
+
+dependencies {
+
+    compile group: 'com.google.guava', name: 'guava', version: '21.0'
+
+    compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+   /* compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile (group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4jTolog4j12) {
+        exclude group: 'org.slf4j'
+    }*/
+    compile group: 'org.apache.lucene', name: 'lucene-core', version: luceneCoreVersion
+
+    compile (group: 'org.springframework.data', name: 'spring-data-jpa', version: springDataVersion) {
+        exclude group: 'org.springframework.data:spring-data-commons'
+    }
+    compile group: 'org.springframework.data', name: 'spring-data-commons', version: springDataVersion
+
+    compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+
+
+
+    compile (group: 'com.zaxxer', name: 'HikariCP', version: '2.6.1') {
+        exclude group: 'org.slf4j'
+    }
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+
+
+
+    compile group: 'org.hibernate', name: 'hibernate-core', version: hibernateCoreVersion
+    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
+
+    // security
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.2.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.2.RELEASE'
+
+    // second level cache with ehcache
+    compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.2.10.Final'
+    compile group: 'org.ehcache', name: 'ehcache', version: '3.3.1'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
