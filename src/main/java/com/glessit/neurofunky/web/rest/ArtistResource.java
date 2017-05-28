@@ -1,4 +1,4 @@
-package com.glessit.neurofunky.rest;
+package com.glessit.neurofunky.web.rest;
 
 import com.glessit.neurofunky.entity.Artist;
 import com.glessit.neurofunky.repository.ArtistRepository;

@@ -1,6 +1,6 @@
-package com.glessit.neurofunky.rest;
+package com.glessit.neurofunky.web.rest;
 
-import com.glessit.neurofunky.rest.dto.NewsDto;
+import com.glessit.neurofunky.web.rest.dto.NewsDto;
 import com.glessit.neurofunky.service.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,23 +15,24 @@ import java.util.Set;
 @RequestMapping(value = "/news")
 public class NewsResource {
 
-    @Autowired
-    private INewsService newsService;
+//    @Autowired
+//    private INewsService newsService;
 
     @RequestMapping(value = "/fresh", method = RequestMethod.GET)
     public Set<NewsDto> getFreshNews() {
-
+        return null;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public NewsDto getNewsById(@PathVariable(value = "id") Integer newsId) {
-        return newsService.getNewsById(newsId);
+        return null;
+//        return newsService.getNewsById(newsId);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.PUT)
     @PreAuthorize(value = "hasRole('glessit')")
     public NewsDto createNews(NewsDto news) {
-
+        return null;
     }
 
 }

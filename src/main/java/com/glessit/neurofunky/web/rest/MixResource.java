@@ -1,18 +1,13 @@
-package com.glessit.neurofunky.rest;
+package com.glessit.neurofunky.web.rest;
 
 import com.glessit.neurofunky.entity.Mix;
 import com.glessit.neurofunky.entity.Source;
 import com.glessit.neurofunky.repository.MixRepository;
-import com.glessit.neurofunky.service.IMixService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 

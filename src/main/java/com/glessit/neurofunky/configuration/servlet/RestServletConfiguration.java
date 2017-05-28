@@ -5,6 +5,7 @@ import com.glessit.neurofunky.configuration.RootConfiguration;
 import com.glessit.neurofunky.configuration.jpa.JPAConfiguration;
 import com.glessit.neurofunky.configuration.LuceneConfiguration;
 import com.glessit.neurofunky.configuration.RestConfiguration;
+import com.glessit.neurofunky.configuration.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,7 @@ public class RestServletConfiguration implements WebApplicationInitializer {
 //        rootContext.register(LuceneConfiguration.class);
         rootContext.register(JPAConfiguration.class);
         rootContext.register(RootConfiguration.class);
+        rootContext.register(SecurityConfiguration.class);
 
         servletContext.addListener(new ContextLoaderListener(rootContext));
 
@@ -42,8 +44,11 @@ public class RestServletConfiguration implements WebApplicationInitializer {
                 new AnnotationConfigWebApplicationContext();
         restContext.register(RestConfiguration.class);
 
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(restContext);
+        dispatcherServlet.setDetectAllHandlerAdapters(true);
+
         ServletRegistration.Dynamic registration = servletContext
-                .addServlet(servletName, new DispatcherServlet(restContext));
+                .addServlet(servletName, dispatcherServlet);
 
         registration.setLoadOnStartup(1);
         registration.addMapping(servletMapping);

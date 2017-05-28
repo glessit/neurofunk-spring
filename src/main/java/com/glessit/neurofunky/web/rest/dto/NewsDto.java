@@ -1,4 +1,4 @@
-package com.glessit.neurofunky.rest.dto;
+package com.glessit.neurofunky.web.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

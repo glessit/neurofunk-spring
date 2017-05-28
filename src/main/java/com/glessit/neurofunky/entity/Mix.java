@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "\"NFK_MIX\"")
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "MIX")
+//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "MIX")
 public class Mix extends AbstractPersistable<Long> implements java.io.Serializable {
 
     @Getter

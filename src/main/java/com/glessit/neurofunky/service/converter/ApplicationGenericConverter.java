@@ -1,7 +1,7 @@
 package com.glessit.neurofunky.service.converter;
 
 import com.glessit.neurofunky.entity.News;
-import com.glessit.neurofunky.rest.dto.NewsDto;
+import com.glessit.neurofunky.web.rest.dto.NewsDto;
 import com.google.common.collect.Sets;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.core.convert.converter.GenericConverter;

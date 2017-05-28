@@ -15,7 +15,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "\"NFK_ARTIST\"")
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "ARTIST")
+//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "ARTIST") - second level
+// cache!!!
 public class Artist extends AbstractPersistable<Long> implements java.io.Serializable {
 
     @Column(unique = true)

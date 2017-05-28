@@ -30,12 +30,25 @@ ext {
 dependencies {
 
     compile group: 'com.google.guava', name: 'guava', version: '21.0'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.8'
+/*    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.8'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.8.8'
+    compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.12'*/
+
+
 
     compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
-   /* compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-    compile (group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4jTolog4j12) {
-        exclude group: 'org.slf4j'
-    }*/
+
+
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+
+
+
+
     compile group: 'org.apache.lucene', name: 'lucene-core', version: luceneCoreVersion
 
     compile (group: 'org.springframework.data', name: 'spring-data-jpa', version: springDataVersion) {
@@ -48,9 +61,7 @@ dependencies {
 
 
 
-    compile (group: 'com.zaxxer', name: 'HikariCP', version: '2.6.1') {
-        exclude group: 'org.slf4j'
-    }
+    compile (group: 'com.zaxxer', name: 'HikariCP', version: '2.6.1')
     compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
 
 
@@ -61,6 +72,8 @@ dependencies {
     // security
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.2.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.2.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.2.RELEASE'
+
 
     // second level cache with ehcache
     compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.2.10.Final'
