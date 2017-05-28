@@ -2,7 +2,7 @@ README.txt
 .idea
 deps.txt
 .gradle
-
+DESC.txt
 /build/
 out
 neurofunky-spring.iml
