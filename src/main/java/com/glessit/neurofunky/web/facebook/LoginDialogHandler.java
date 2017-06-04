@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +54,7 @@ public class LoginDialogHandler {
     private static Logger LOGGER = LoggerFactory.getLogger(LoginDialogHandler.class);
 
     @RequestMapping(value = "/dialog/url", method = RequestMethod.GET)
+    @PreAuthorize(value = "hasRole('glessitsss')")
     public Map<String,String> getDialogHandlerURL() {
         Map<String, String> result = Maps.newHashMap();
         result.put("URL", format(DIALOG_URL, clientId, redirectURI));

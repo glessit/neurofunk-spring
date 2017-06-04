@@ -2,7 +2,6 @@ group 'com.glessit.neurofunky'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-apply plugin: 'war'
 
 sourceCompatibility = 1.8
 
@@ -12,6 +11,18 @@ repositories {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.5'
+}
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': version,
+                'Main-Class': 'com.glessit.neurofunky.NeurofunkyLauncher'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 
 
@@ -78,6 +89,14 @@ dependencies {
     // second level cache with ehcache
     compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.2.10.Final'
     compile group: 'org.ehcache', name: 'ehcache', version: '3.3.1'
+
+    compile group: 'org.eclipse.jetty', name: 'jetty-annotations', version: '9.4.5.v20170502'
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.5.v20170502'
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.5.v20170502'
+    compile group: 'org.eclipse.jetty', name: 'jetty-util', version: '9.4.5.v20170502'
+    compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.5.v20170502'
+
+
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

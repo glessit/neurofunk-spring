@@ -9,7 +9,7 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 @Configuration
 public class ConverterConfiguration {
 
-    @Bean
+    @Bean(name = "primaryConverterService")
     public ConversionServiceFactoryBean conversionServiceFactoryBean() {
         ConversionServiceFactoryBean conversionService = new ConversionServiceFactoryBean();
         conversionService.setConverters(Sets.newHashSet(new ApplicationGenericConverter()));

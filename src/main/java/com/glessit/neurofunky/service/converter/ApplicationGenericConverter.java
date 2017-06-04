@@ -21,6 +21,9 @@ public class ApplicationGenericConverter implements GenericConverter {
 
     @Override
     public Object convert(Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
+        if (source.getClass().equals(News.class) && sourceType.getType().equals(NewsDto.class)) {
+            return new NewsDto((News)source);
+        }
         return null;
     }
 }

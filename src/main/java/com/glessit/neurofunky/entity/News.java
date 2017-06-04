@@ -1,5 +1,6 @@
 package com.glessit.neurofunky.entity;
 
+import com.glessit.neurofunky.web.rest.dto.NewsDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -18,15 +19,21 @@ public class News extends AbstractPersistable<Long> implements java.io.Serializa
     @Column(nullable = false)
     private LocalDateTime created = LocalDateTime.now();
 
-    @Getter
     @Setter
     @Column
     private Boolean visible = true;
 
-    @Getter
+    public Boolean isVisible() {
+        return visible;
+    }
+
     @Setter
     @Column
     private Boolean shortNews = true;
+
+    public Boolean isShortNews() {
+        return shortNews;
+    }
 
     @Getter
     @Setter
@@ -48,5 +55,18 @@ public class News extends AbstractPersistable<Long> implements java.io.Serializa
     public News(String news, String title) {
         this.news = news;
         this.title = title;
+    }
+
+    public News(NewsDto item) {
+        this.created = item.getCreated();
+        this.visible = item.isVisible();
+        this.shortNews = item.isShortNews();
+        this.news = item.getNews();
+        this.title = item.getTitle();
+        this.image = item.getImage();
+    }
+
+    public final static News create() {
+        return new News();
     }
 }
