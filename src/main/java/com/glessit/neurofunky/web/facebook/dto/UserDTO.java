@@ -1,4 +1,4 @@
 package com.glessit.neurofunky.web.facebook.dto;
 
-public class User {
+public class UserDTO {
 }

@@ -1,17 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
-                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet author="authorName" id="changelog-1.0">
-        <createTable tableName="TablesAndTables">
-            <column name="COLUMN1" type="TEXT">
-                <constraints nullable="true" primaryKey="false" unique="false"/>
+    <changeSet author="glessit" id="1497210213033-1">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_ARTIST" schemaName="public">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-2-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+           columnNames="id"
+           constraintName="pk_artist"
+           schemaName="public"
+           tableName="NFK_ARTIST" />
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_MIX"  schemaName="public">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="length" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="likes" type="BIGINT"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="source_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-3-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+            columnNames="id"
+            constraintName="pk_mix"
+            schemaName="public"
+            tableName="NFK_MIX" />
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_MIX_TAGS" schemaName="public">
+            <column name="mix_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tags" type="VARCHAR(255)"/>
+            <column name="tags_order" type="INT">
+                <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_NEWS" schemaName="public">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP(6) WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="news" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shortnews" type="BOOL"/>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visible" type="BOOL"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-5-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_news"
+                schemaName="public"
+                tableName="NFK_NEWS" />
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-6" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_SOURCE" schemaName="public">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="youtube" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-6-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_source"
+                schemaName="public"
+                tableName="NFK_SOURCE" />
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-7" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_TRACK" schemaName="public">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="length" type="INT"/>
+            <column name="track" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-7-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_track"
+                schemaName="public"
+                tableName="NFK_TRACK" />
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-8" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_TRACK_ARTIST" schemaName="public">
+            <column name="track_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="artist_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-9" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_USER" schemaName="public">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facebookid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-9-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_user"
+                schemaName="public"
+                tableName="NFK_USER" />
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-10" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_ARTIST_pkey" tableName="NFK_ARTIST" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-11" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_MIX_TAGS_pkey" tableName="NFK_MIX_TAGS" unique="true" schemaName="public">
+            <column name="mix_id"/>
+            <column name="tags_order"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-12" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_MIX_pkey" tableName="NFK_MIX" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-13" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_NEWS_pkey" tableName="NFK_NEWS" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-14" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_SOURCE_pkey" tableName="NFK_SOURCE" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-15" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_TRACK_ARTIST_pkey" tableName="NFK_TRACK_ARTIST" unique="true" schemaName="public">
+            <column name="track_id"/>
+            <column name="artist_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-16" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_TRACK_pkey" tableName="NFK_TRACK" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-17" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_USER_pkey" tableName="NFK_USER" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-18" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="uk_1wf82jnti8bbnbengbao3pq1t" tableName="NFK_USER" unique="true" schemaName="public">
+            <column name="facebookid"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-19" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="uk_4fw1djyj3tuytriwiw1lxht90" tableName="NFK_ARTIST" unique="true" schemaName="public">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-20" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="uk_i66gu16xal5aumbc6e5cseo9f" tableName="NFK_TRACK" unique="true" schemaName="public">
+            <column name="track"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

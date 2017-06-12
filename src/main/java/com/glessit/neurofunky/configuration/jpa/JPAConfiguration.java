@@ -1,5 +1,6 @@
 package com.glessit.neurofunky.configuration.jpa;
 
+import com.glessit.neurofunky.configuration.LiquibaseConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Map;
 
 @Configuration
-@Import(value = {DatasourceConfiguration.class, JpaPropertyConfiguration.class})
+@Import(value = {DatasourceConfiguration.class, JpaPropertyConfiguration.class, LiquibaseConfiguration.class})
 @EnableJpaRepositories(basePackages = {"com.glessit.neurofunky.repository"})
 @EnableTransactionManagement
 public class JPAConfiguration {

@@ -2,14 +2,18 @@ package com.glessit.neurofunky.web.facebook;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.glessit.neurofunky.service.IUserService;
 import com.glessit.neurofunky.web.facebook.dto.AccessToken;
 import com.glessit.neurofunky.web.facebook.dto.LoginResult;
 import com.google.common.base.Charsets;
+import com.google.common.base.Joiner;
 import com.google.common.collect.Maps;
 import com.google.common.io.CharStreams;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +46,14 @@ public class LoginDialogHandler {
     private String redirectURI;
     @Value(value = "${facebook.appSecret}")
     private String appSecret;
+    @Value(value = "${facebook.meEndpoint}")
+    private String meEndpoint;
     @Autowired
     private HttpClient httpClient;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private IUserService userService;
 
     private final static String DIALOG_URL = "https://www.facebook.com/v2.9/dialog/oauth?client_id=%s&redirect_uri=%s";
     private final static String GET_TOKEN_BY_CODE = "https://graph.facebook.com/v2.9/oauth/access_token?" +
@@ -92,14 +100,39 @@ public class LoginDialogHandler {
                 throw new Exception(errorMessage);
             }
 
-                AccessToken accessTokenObject = objectMapper.readValue(rawJson, AccessToken.class);
+            AccessToken accessTokenObject = objectMapper.readValue(rawJson, AccessToken.class);
+
+            LOGGER.info("Try to get information about user from Facebook API..");
+
+            String[] requiredFields = new String[] {"first_name", "last_name", "email, picture"};
+
+            URI meEndpointURI = create(meEndpoint);
+
+            URIBuilder builder = new URIBuilder();
+            builder
+                    .setScheme(meEndpointURI.getScheme())
+                    .setHost(meEndpointURI.getHost())
+                    .setPort(meEndpointURI.getPort())
+                    .setPath(meEndpointURI.getPath())
+                    .setParameter("fields", Joiner.on(",").join(requiredFields))
+                    .setParameter("access_token", accessTokenObject.getAccess_token());
+
+            HttpResponse userInfoResponse = httpClient.execute(
+                    new HttpGet(builder.build())
+            );
+
+            System.out.println(userInfoResponse.getEntity().getContentLength());
+
+            // https://graph.facebook.com/me?fields=name,picture,last_name,first_name,email&access_token=
+
+
+
+
                 // get username, avatar
                 // create user is not exist, and do auto-login
                 System.out.println();
             return new LoginResult();
 
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

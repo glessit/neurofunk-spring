@@ -2,6 +2,7 @@ package com.glessit.neurofunky.web.rest;
 
 import com.glessit.neurofunky.service.INewsService;
 import com.glessit.neurofunky.web.rest.dto.NewsDto;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,8 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/news")
-//@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Slf4j
 public class NewsResource {
-
-    private final static Logger LOG = LoggerFactory.getLogger(NewsResource.class);
 
     @Autowired
     private INewsService newsService;
@@ -34,7 +33,7 @@ public class NewsResource {
 
     @RequestMapping(value = "/fresh", method = RequestMethod.GET)
     public Set<NewsDto> getFreshNews() {
-        return null;
+        return conversionService.convert(newsService.getFreshNews(), Set.class);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -44,9 +43,9 @@ public class NewsResource {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.PUT)
-    @PreAuthorize(value = "hasRole('glessi8t')")
-    public NewsDto createNews(@RequestBody NewsDto news,Principal principal) {
-        LOG.info("Create news. Title: {}", news.getTitle());
+    @PreAuthorize(value = "hasRole('glessit')")
+    public NewsDto createNews(@RequestBody NewsDto news) {
+        log.info("Create news. Title: {}", news.getTitle());
         return conversionService.convert(newsService.create(news), NewsDto.class);
     }
 

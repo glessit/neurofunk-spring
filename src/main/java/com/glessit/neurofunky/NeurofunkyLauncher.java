@@ -1,8 +1,7 @@
 package com.glessit.neurofunky;
 
-
 import com.glessit.neurofunky.configuration.security.SecurityInitialization;
-import com.glessit.neurofunky.configuration.servlet.RestServletConfiguration;
+import com.glessit.neurofunky.configuration.servlet.ApplicationConfigurationInitializer;
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.annotations.ClassInheritanceHandler;
 import org.eclipse.jetty.server.Server;
@@ -15,7 +14,7 @@ public class NeurofunkyLauncher {
 
     public static void main(String[] args) throws Exception {
 
-        Server server = new Server(8080);
+        Server server = new Server(8081);
 
         WebAppContext webAppContext = new WebAppContext();
         webAppContext.setResourceBase("src/main/webapp");
@@ -29,8 +28,8 @@ public class NeurofunkyLauncher {
                         ClassInheritanceMap map = new ClassInheritanceMap();
                         map.put(WebApplicationInitializer.class.getName(),
                                 new ConcurrentHashSet<String>() {{
-                                    add(RestServletConfiguration.class.getName());
-                                    add(SecurityInitialization.class.getName());
+                                    add(ApplicationConfigurationInitializer.class.getName());
+//                                     add(SecurityInitialization.class.getName());
 
                                 }});
                         context.setAttribute(CLASS_INHERITANCE_MAP, map);

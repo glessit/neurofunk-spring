@@ -62,5 +62,6 @@ public class NewsDto {
         newsItem.setNews(news.getNews());
         newsItem.setTitle(news.getTitle());
         newsItem.setImage(news.getImage());
+//        return news;
     }
 }
