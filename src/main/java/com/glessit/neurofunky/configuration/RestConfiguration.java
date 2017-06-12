@@ -7,13 +7,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @Configuration
-@ComponentScan(basePackages = {"com.glessit.neurofunky.web.facebook", "com.glessit.neurofunky.web.rest"})
+@ComponentScan(basePackages = {"com.glessit.neurofunky.web"})
+@EnableSpringDataWebSupport
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class RestConfiguration extends WebMvcConfigurationSupport {
+public class RestConfiguration extends DelegatingWebMvcConfiguration {
 
     @Bean(value = "simpleHttpClient")
     @Scope(value = "prototype")

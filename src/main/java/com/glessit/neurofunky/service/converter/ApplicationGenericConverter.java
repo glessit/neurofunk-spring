@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.core.convert.converter.GenericConverter;
 import org.springframework.stereotype.Component;
+import org.springframework.data.domain.Page;
 
 import java.util.Set;
 
@@ -15,7 +16,8 @@ public class ApplicationGenericConverter implements GenericConverter {
     @Override
     public Set<ConvertiblePair> getConvertibleTypes() {
         return Sets.newHashSet(
-                new ConvertiblePair(News.class, NewsDto.class)
+                new ConvertiblePair(News.class, NewsDto.class),
+                new ConvertiblePair(Page.class, Set.class)
         );
     }
 

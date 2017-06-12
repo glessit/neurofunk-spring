@@ -1,6 +1,8 @@
 package com.glessit.neurofunky.web.rest;
 
+import com.glessit.neurofunky.entity.News;
 import com.glessit.neurofunky.service.INewsService;
+import com.glessit.neurofunky.service.exception.NotFoundException;
 import com.glessit.neurofunky.web.rest.dto.NewsDto;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -10,6 +12,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.TypeDescriptor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -31,15 +38,24 @@ public class NewsResource {
     @Qualifier(value = "primaryConverterService")
     private ConversionService conversionService;
 
-    @RequestMapping(value = "/fresh", method = RequestMethod.GET)
-    public Set<NewsDto> getFreshNews() {
-        return conversionService.convert(newsService.getFreshNews(), Set.class);
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public Page<NewsDto> pageableNews(Pageable pageable) throws IllegalAccessException {
+        if (pageable.getPageSize() > 10) {
+            throw new IllegalAccessException("Can't fetch more than 10 items");
+        }
+        Page<News> result = newsService.fetchNews(pageable);
+        return new PageImpl<>(
+                (List<NewsDto>) conversionService.convert(
+                        result.getContent(),
+                        TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(News.class)),
+                        TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(NewsDto.class))
+                )
+        );
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public NewsDto getNewsById(@PathVariable(value = "id") Integer newsId) {
-        return null;
-//        return newsService.getNewsById(newsId);
+    public NewsDto getNewsById(@PathVariable(value = "id") Long newsId) throws NotFoundException {
+        return conversionService.convert(newsService.getNewsById(newsId), NewsDto.class);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.PUT)
