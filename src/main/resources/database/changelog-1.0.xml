@@ -74,7 +74,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="image" type="VARCHAR(255)"/>
-            <column name="news" type="VARCHAR(255)">
+            <column name="news" type="TEXT">
                 <constraints nullable="false"/>
             </column>
             <column name="shortnews" type="BOOL"/>

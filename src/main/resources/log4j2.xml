@@ -6,7 +6,10 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="org.springframework" level="TRACE"/>
+        <Logger name="org.springframework" level="ERROR"/>
+        <Logger name="com.glessit.neurofunky" level="TRACE"/>
+        <Logger name="org.hibernate.type" level="DEBUG"/>
+        <Logger name="org.hibernate.sql" level="INFO"/>
         <Root level="error">
             <AppenderRef ref="Console"/>
         </Root>

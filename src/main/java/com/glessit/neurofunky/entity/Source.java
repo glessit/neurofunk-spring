@@ -22,7 +22,7 @@ public class Source extends AbstractPersistable<Long> implements java.io.Seriali
     @Column
     private String description;
 
-    private Source() {}
+    public Source() {}
 
     public Source(String youtube) {
         this.youtube = youtube;

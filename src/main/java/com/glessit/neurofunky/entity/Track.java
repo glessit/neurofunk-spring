@@ -4,7 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +22,7 @@ import java.util.Set;
 @Table(name = "\"NFK_TRACK\"")
 public class Track extends AbstractPersistable<Long> implements java.io.Serializable {
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="\"NFK_TRACK_ARTIST\"",
             joinColumns=@JoinColumn(name="track_id", referencedColumnName="id"),
@@ -27,11 +35,16 @@ public class Track extends AbstractPersistable<Long> implements java.io.Serializ
     @Column
     private Integer length;
 
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="source_id")
+    private Source source;
+
     private Track() {}
 
-    public Track(Set<Artist> artists, String track, Integer length) {
+    public Track(Set<Artist> artists, String track, Integer length, Source source) {
         this.artists = artists;
         this.track = track;
         this.length = length;
+        this.source = source;
     }
 }

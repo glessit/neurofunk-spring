@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="glessit" id="1497210213034-21-0" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addColumn schemaName="public"
+                   tableName="NFK_TRACK">
+            <column name="source_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213034-21" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Emperor"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-22" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Freqax"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-23" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Counterstrike"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-24" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="June Miller"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-25" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="James Marvel"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-26" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="MC Mota"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-27" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Disprove"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-28" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Merikan"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-29" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="The Clamps"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-31" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Cod3x"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-32" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="A.M.C"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-33" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Turno"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-34" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Agressor Bunx"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-35" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Cause4Concern"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-37" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="MachineCode"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-41" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Spor"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-42" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Current Value"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-43" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Akov"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-44" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Tantrum Desire"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-45" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Cruk"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-49" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Mean Teeth"/>
+        </insert>
+    </changeSet>
+
+    <!--https://www.youtube.com/watch?v=GVpUwgqNPMo-->
+
+    <changeSet author="glessit" id="1497210213034-50" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Kasra"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-51" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Enei"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-52" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="DRS"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-53" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Signal"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-54" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Phentix"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-55" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Bionic1"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-56" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Kursa"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-57" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Faek"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-58" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Quadrant"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-59" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Kid Hops"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-60" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Iris"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-61" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Noel"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-62" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="L 33"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-63" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Hybris"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-67" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Hypoxia"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-68" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="MC Seko"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-69" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Zombie Cats"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-70" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Concept Vision"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-71" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Klax"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-73" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="SOLAH"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-75" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Segment"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-77" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Inward"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-78" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Hanzo"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-81" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Aeph"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-83" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Gydra"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-85" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Zero Method"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-86" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Proxima"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-87" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Disphonia"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-88" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Camerlog"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-89" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Dephzac"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-90" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Axiom"/>
+        </insert>
+    </changeSet>
+    <changeSet author="glessit" id="1497210213034-92" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ARTIST">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="image" type="VARCHAR(255)" value=""/>
+            <column name="name" type="VARCHAR(255)" value="Machine Code"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
