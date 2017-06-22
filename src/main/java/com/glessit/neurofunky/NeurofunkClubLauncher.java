@@ -1,6 +1,5 @@
 package com.glessit.neurofunky;
 
-import com.glessit.neurofunky.configuration.security.SecurityInitialization;
 import com.glessit.neurofunky.configuration.servlet.ApplicationConfigurationInitializer;
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.annotations.ClassInheritanceHandler;
@@ -10,7 +9,7 @@ import org.eclipse.jetty.webapp.Configuration;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.springframework.web.WebApplicationInitializer;
 
-public class NeurofunkyLauncher {
+public class NeurofunkClubLauncher {
 
     public static void main(String[] args) throws Exception {
 
@@ -20,7 +19,6 @@ public class NeurofunkyLauncher {
         webAppContext.setResourceBase("src/main/webapp");
         webAppContext.setContextPath("/");
         webAppContext.setConfigurations(new Configuration[] {
-                // new WebXmlConfiguration(),
                 new AnnotationConfiguration() {
                     @Override
                     public void preConfigure(WebAppContext context) {
@@ -29,8 +27,6 @@ public class NeurofunkyLauncher {
                         map.put(WebApplicationInitializer.class.getName(),
                                 new ConcurrentHashSet<String>() {{
                                     add(ApplicationConfigurationInitializer.class.getName());
-//                                     add(SecurityInitialization.class.getName());
-
                                 }});
                         context.setAttribute(CLASS_INHERITANCE_MAP, map);
                         _classInheritanceHandler = new ClassInheritanceHandler(map);

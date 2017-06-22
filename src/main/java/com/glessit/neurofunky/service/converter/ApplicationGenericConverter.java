@@ -45,11 +45,11 @@ public class ApplicationGenericConverter implements GenericConverter {
         }
 
         if (source.getClass().equals(Artist.class) && targetType.getType().equals(ArtistDto.class)) {
-            Artist sourceObject = (Artist) source;
+          /*  Artist sourceObject = (Artist) source;
             return ArtistDto.builder()
                     .id(sourceObject.getId())
                     .name(sourceObject.getName())
-                    .build();
+                    .build();*/
         }
 
         if (source.getClass().equals(Track.class) && targetType.getType().equals(TrackDto.class)) {

@@ -8,8 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ArtistDto {
-    private Long id;
-    private String name;
-    private String image;
+public class SourceDto {
+    private String youtube;
+    private String description;
 }

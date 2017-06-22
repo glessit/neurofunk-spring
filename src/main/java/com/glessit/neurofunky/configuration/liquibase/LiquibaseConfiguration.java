@@ -1,6 +1,5 @@
-package com.glessit.neurofunky.configuration;
+package com.glessit.neurofunky.configuration.liquibase;
 
-import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +17,9 @@ public class LiquibaseConfiguration {
     private DataSource primaryDatasource;
 
     @Bean
-    public SpringLiquibase springLiquibaseBean() {
-        SpringLiquibase springLiquibaseBean = new SpringLiquibase();
+    public CustomSpringLiquibaseBean springLiquibaseBean() {
+        // need to override class see meta-inf issues
+        CustomSpringLiquibaseBean springLiquibaseBean = new CustomSpringLiquibaseBean();
         springLiquibaseBean.setDataSource(primaryDatasource);
         springLiquibaseBean.setChangeLog(changeLogLocation);
         return springLiquibaseBean;

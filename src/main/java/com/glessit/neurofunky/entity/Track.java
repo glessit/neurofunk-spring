@@ -22,7 +22,7 @@ import java.util.Set;
 @Table(name = "\"NFK_TRACK\"")
 public class Track extends AbstractPersistable<Long> implements java.io.Serializable {
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name="\"NFK_TRACK_ARTIST\"",
             joinColumns=@JoinColumn(name="track_id", referencedColumnName="id"),

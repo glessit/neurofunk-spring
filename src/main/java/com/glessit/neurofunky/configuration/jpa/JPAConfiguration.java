@@ -1,6 +1,6 @@
 package com.glessit.neurofunky.configuration.jpa;
 
-import com.glessit.neurofunky.configuration.LiquibaseConfiguration;
+import com.glessit.neurofunky.configuration.liquibase.LiquibaseConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

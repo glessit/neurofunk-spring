@@ -6,17 +6,31 @@ import com.glessit.neurofunky.entity.Track;
 import com.glessit.neurofunky.repository.ArtistRepository;
 import com.glessit.neurofunky.repository.TrackRepository;
 import com.glessit.neurofunky.service.ITrackService;
+import com.glessit.neurofunky.service.dto.FullTrackNameDto;
+import com.glessit.neurofunky.web.rest.dto.ArtistDto;
 import com.glessit.neurofunky.web.rest.dto.SimpleTrackDto;
+import com.glessit.neurofunky.web.rest.dto.SourceDto;
 import com.glessit.neurofunky.web.rest.dto.TrackDto;
+import com.google.common.base.Stopwatch;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -26,11 +40,47 @@ public class TrackService implements ITrackService {
     private TrackRepository trackRepository;
     @Autowired
     private ArtistRepository artistRepository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Track> fetchTrack(Pageable pageable) {
-        return trackRepository.findAll(pageable);
+    public Page<FullTrackNameDto> fetchTrack(Pageable pageable) {
+
+        Set<FullTrackNameDto> pageContent = new TreeSet<>();
+
+        Stopwatch stopwatch = Stopwatch.createStarted();
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Track> criteriaQuery = criteriaBuilder.createQuery(Track.class);
+
+        Root<Track> root = criteriaQuery.from(Track.class);
+        root.join("artists");
+        root.join("source");
+
+        criteriaQuery.select(root);
+
+        TypedQuery<Track> typedQuery = entityManager.createQuery(criteriaQuery);
+        List<Track> resultOfQuery = typedQuery.getResultList();
+
+        return new PageImpl<FullTrackNameDto>(
+                resultOfQuery.stream().map(track -> {
+                    Set<ArtistDto> artistDtos = track.getArtists()
+                            .stream().map(artist -> new ArtistDto(artist.getId(), artist.getName(), ""))
+                                    .collect
+                                    (Collectors.toSet
+                                    ());
+
+            // prepare artists
+
+
+            return new FullTrackNameDto(
+                    artistDtos, "", 1, new SourceDto(track.getSource().getYoutube(), track.getSource().getDescription
+                    ()) );
+
+        })
+                .collect(Collectors.toList()));
+
+//        return new PageImpl<Track>(typedQuery.getResultList()); //trackRepository.findAll(pageable);
     }
 
     @Override

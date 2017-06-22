@@ -1,28 +1,28 @@
 group 'com.glessit.neurofunky'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.liquibase:liquibase-gradle-plugin:1.2.4"
-        classpath "org.postgresql:postgresql:42.1.1"
-    }
-}
+//buildscript {
+//    repositories {
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath "org.liquibase:liquibase-gradle-plugin:1.2.4"
+//        classpath "org.postgresql:postgresql:42.1.1"
+//    }
+//}
 
-apply plugin: 'org.liquibase.gradle'
+//apply plugin: 'org.liquibase.gradle'
 
-liquibase {
-    activities {
-        main {
-            changeLogFile 'changelog-1.0.xml'
-            url 'jdbc:postgresql://localhost:5432/neurofunky'
-            username 'neurofunkyDBUser16'
-            password 'pswd16Xss!'
-        }
-    }
-}
+//liquibase {
+//    activities {
+//        main {
+//            changeLogFile 'changelog-1.0.xml'
+//            url 'jdbc:postgresql://localhost:5432/neurofunky'
+//            username 'neurofunkyDBUser16'
+//            password 'pswd16Xss!'
+//        }
+//    }
+//}
 
 apply plugin: 'java'
 
@@ -40,7 +40,8 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
                 'Implementation-Version': version,
-                'Main-Class': 'com.glessit.neurofunky.NeurofunkyLauncher'
+                'Main-Class': 'com.glessit.neurofunky.NeurofunkyLauncher',
+                'Liquibase-Package': 'liquibase'
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
