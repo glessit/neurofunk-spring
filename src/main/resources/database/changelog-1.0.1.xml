@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="glessit" id="1497210213033-101-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="NFK_ROLE" schemaName="public">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(25)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-101-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_ROLE_pkey" tableName="NFK_ROLE" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-101-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_role"
+                schemaName="public"
+                tableName="NFK_ROLE" />
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-101-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ROLE">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="type" type="VARCHAR(25)" value="SUPER_ADMIN"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-101-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ROLE">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="type" type="VARCHAR(25)" value="ADMIN"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-101-51" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ROLE">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="type" type="VARCHAR(25)" value="USER"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="glessit" id="1497210213033-101-6" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_ROLE">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="type" type="VARCHAR(25)" value="SIMPLE_USER"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

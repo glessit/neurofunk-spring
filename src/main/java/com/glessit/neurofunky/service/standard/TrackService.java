@@ -62,25 +62,23 @@ public class TrackService implements ITrackService {
         TypedQuery<Track> typedQuery = entityManager.createQuery(criteriaQuery);
         List<Track> resultOfQuery = typedQuery.getResultList();
 
-        return new PageImpl<FullTrackNameDto>(
+        return new PageImpl<>(
                 resultOfQuery.stream().map(track -> {
                     Set<ArtistDto> artistDtos = track.getArtists()
                             .stream().map(artist -> new ArtistDto(artist.getId(), artist.getName(), ""))
-                                    .collect
+                            .collect
                                     (Collectors.toSet
-                                    ());
+                                            ());
 
-            // prepare artists
+                    return new FullTrackNameDto(
+                            artistDtos, track.getTrack(), track.getLength(), new SourceDto(track.getSource().getYoutube(),
+                            track
+                            .getSource()
+                            .getDescription
+                                    ()));
 
-
-            return new FullTrackNameDto(
-                    artistDtos, "", 1, new SourceDto(track.getSource().getYoutube(), track.getSource().getDescription
-                    ()) );
-
-        })
-                .collect(Collectors.toList()));
-
-//        return new PageImpl<Track>(typedQuery.getResultList()); //trackRepository.findAll(pageable);
+                })
+                        .collect(Collectors.toList()));
     }
 
     @Override

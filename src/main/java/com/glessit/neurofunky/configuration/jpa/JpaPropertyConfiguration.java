@@ -11,7 +11,7 @@ public class JpaPropertyConfiguration {
     @Bean(name = "jpaPropertyMap")
     public HashMap<String,Object> jpaPropertyBean() {
         HashMap<String, Object> jpaPropertyBean = new HashMap<>();
-        jpaPropertyBean.put("hibernate.hbm2ddl.auto", "none");
+        jpaPropertyBean.put("hibernate.hbm2ddl.auto", "create-drop");
         jpaPropertyBean.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         jpaPropertyBean.put("hibernate.max_fetch_depth", "0");
 /*

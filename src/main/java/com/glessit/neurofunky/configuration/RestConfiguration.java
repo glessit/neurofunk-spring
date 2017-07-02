@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration;
 
@@ -27,6 +28,11 @@ public class RestConfiguration extends DelegatingWebMvcConfiguration {
     @Bean(value = "simpleObjectMapper")
     public ObjectMapper objectMapperBean() {
         return new ObjectMapper();
+    }
+
+    @Bean
+    public RestTemplate restTemplateBean() {
+        return new RestTemplate();
     }
 
     @Override

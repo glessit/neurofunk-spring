@@ -155,6 +155,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="picture" type="VARCHAR(255)"/>
+            <column name="role_id" type="BIGINT"/>
         </createTable>
     </changeSet>
 
