@@ -9,5 +9,6 @@
     <include file="database/changelog-1.0.xml"/>
     <include file="database/changelog-1.0.1.xml"/>
     <include file="database/changelog-1.1.1.xml"/>
+    <include file="database/changelog-1.1.2.xml"/>
 
 </databaseChangeLog>
