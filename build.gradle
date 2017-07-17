@@ -17,7 +17,24 @@ sourceSets {
         output.resourcesDir = 'build/production/resources/main'
         compileClasspath = compileClasspath.plus(sourceSets.main.compileClasspath)
     }
+    idea {
+        java.srcDirs = java.srcDirs + sourceSets.main.java.srcDirs
+        resources.srcDirs 'src/main/resources/env/development'
+        output.classesDir = 'build/classes/main/'
+        output.resourcesDir = 'build/resources/main/'
+        compileClasspath = compileClasspath.plus(sourceSets.main.compileClasspath)
+    }
 }
+
+task developmentIdeaSource(type: Copy) {
+    println 'well done'
+    from('src/main/resources') {
+        exclude 'env/**'
+    }
+    into 'build/resources/main'
+}
+
+developmentIdeaSource.dependsOn ideaClasses
 
 task fatJarCommonResourcesCopy(type: Copy) {
     from('src/main/resources') {
