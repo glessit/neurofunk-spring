@@ -37,7 +37,8 @@ public class RestConfiguration extends DelegatingWebMvcConfiguration {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
+        registry.addMapping("/api/**")
+                .allowedHeaders("*")
                 .allowedOrigins("http://localhost", "http://localhost:8787")
                 .allowedMethods("POST", "GET",  "PUT", "OPTIONS", "DELETE");
     }
