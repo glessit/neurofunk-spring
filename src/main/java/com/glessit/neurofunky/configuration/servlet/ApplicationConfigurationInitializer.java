@@ -26,7 +26,7 @@ import static org.springframework.security.web.context.AbstractSecurityWebApplic
  */
 public class ApplicationConfigurationInitializer implements WebApplicationInitializer {
 
-    private String servletMapping = "/api/*";
+    public static final String DISPATCHER_API_PREFIX = "/api/*";
 
     private final static String servletName = "NeurofunkyRestServlet";
 
@@ -63,7 +63,7 @@ public class ApplicationConfigurationInitializer implements WebApplicationInitia
                 .addServlet(servletName, dispatcherServlet);
 
         registration.setLoadOnStartup(1);
-        registration.addMapping(servletMapping);
+        registration.addMapping(DISPATCHER_API_PREFIX);
     }
 
     private final void insertSpringSecurityFilterChain(ServletContext servletContext) {

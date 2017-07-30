@@ -1,5 +1,6 @@
 package com.glessit.neurofunky.configuration.security.beans;
 
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -7,11 +8,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
+@NoArgsConstructor
 public class FacebookAuthentication implements Authentication {
 
     private Long facebookId;
     private Set<GrantedAuthority> authorities;
-    private final String accessToken;
+    private String accessToken;
     private boolean authenticated = false;
     private Object details;
 

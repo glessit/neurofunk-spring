@@ -16,4 +16,10 @@ public interface ITokenService {
      * @return token for user
      */
     Long createTokenForUser(User user, Long token);
+
+    /**
+     * Check that token is exist in storage and hasn't yet expired
+     * @param requestToken
+     */
+    boolean isTokenValid(Long requestToken);
 }

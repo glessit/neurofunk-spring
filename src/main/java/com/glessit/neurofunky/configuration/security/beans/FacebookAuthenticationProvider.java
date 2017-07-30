@@ -1,6 +1,5 @@
 package com.glessit.neurofunky.configuration.security.beans;
 
-import com.glessit.neurofunky.entity.User;
 import com.glessit.neurofunky.service.ITokenService;
 import com.glessit.neurofunky.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,15 +21,22 @@ public class FacebookAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        // get auth. token (from http request)
-        Long facebookId = Long.valueOf(authentication.getCredentials().toString()) ;
+        log.info("Try to use token {}", authentication.getCredentials());
+        Long requestToken = Long.valueOf(authentication.getCredentials().toString());
 
-        // get user from DB
-        User user = userService.getUserByFacebookId(facebookId);
-        Long token = tokenService.createTokenForUser(user, tokenService.get());
+        if (tokenService.isTokenValid(requestToken)) {
+            authentication.setAuthenticated(true);
+            // get user from DB
+//            User user = userService.getUserByFacebookId(facebookId);
+//            Long token = tokenService.createTokenForUser(user, tokenService.get());
 
-        FacebookAuthentication facebookAuthentication = new FacebookAuthentication(String.valueOf(token));
-        return facebookAuthentication;
+//            FacebookAuthentication facebookAuthentication = new FacebookAuthentication(String.valueOf(token));
+            return authentication;
+        }
+        else {
+            authentication.setAuthenticated(false);
+            return authentication;
+        }
     }
 
     @Override

@@ -40,4 +40,13 @@ public class TokenService implements ITokenService {
         tokenRepository.save(tokenEntity);
         return tokenEntity.getToken();
     }
+
+    @Override
+    public boolean isTokenValid(Long requestToken) {
+        Token token = tokenRepository.findOneByToken(requestToken);
+        if (null != token && token.getExpireDateTime().isAfter(LocalDateTime.now())) {
+            return true;
+        }
+        return false;
+    }
 }

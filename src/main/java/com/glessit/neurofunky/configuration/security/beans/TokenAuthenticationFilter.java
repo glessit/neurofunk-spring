@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
@@ -34,10 +35,13 @@ public class TokenAuthenticationFilter extends GenericFilterBean {
         final String accessToken = httpRequest.getHeader(SecurityConfiguration.HEADER_AUTH_NAME);
         if (null != accessToken) {
             Authentication authResult = facebookAuthenticationProvider.authenticate(new FacebookAuthentication(accessToken));
-            if (authResult.isAuthenticated()) {
+            if (!authResult.isAuthenticated()) {
+                ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "The token is not valid.");
+            }
+            else {
+                chain.doFilter(request, response);
             }
         }
-
         chain.doFilter(request, response);
     }
 }

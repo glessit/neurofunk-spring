@@ -17,10 +17,16 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
+import static com.glessit.neurofunky.configuration.servlet.ApplicationConfigurationInitializer.DISPATCHER_API_PREFIX;
+
 @Configuration
 @ComponentScan(basePackages = {"com.glessit.neurofunky.configuration.security.beans"})
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    private class SecurityURL {
+        private final static String DIALOG_URL = DISPATCHER_API_PREFIX + "facebook/login/dialog/url";
+    }
 
     public final static String HEADER_AUTH_NAME = "X-NFK-AUTH";
 
@@ -32,11 +38,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         auth.authenticationProvider(facebookAuthenticationProvider);
     }
 
+    @Bean
+    public TokenAuthenticationFilter tokenAuthenticationFilter() {
+        return new TokenAuthenticationFilter();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        http.authorizeRequests().antMatchers("/api/mix/get").denyAll().
+
+                anyRequest().permitAll();
+
+        http
+            .authorizeRequests()
+            .antMatchers("/api/facebook/login/dialog/url")
+            .permitAll();
         // Token based authentication via filter implementation
-        final TokenAuthenticationFilter tokenFilter = new TokenAuthenticationFilter();
-        http.addFilterBefore(tokenFilter, BasicAuthenticationFilter.class);
+        http.addFilterBefore(tokenAuthenticationFilter(), BasicAuthenticationFilter.class);
         http.csrf().disable().cors();
     }
 

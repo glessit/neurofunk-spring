@@ -1,6 +1,7 @@
 package com.glessit.neurofunky.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "\"NFK_TOKEN\"")
 public class Token extends AbstractPersistable<Long> implements java.io.Serializable {
