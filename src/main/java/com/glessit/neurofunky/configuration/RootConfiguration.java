@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan(basePackages = {"com.glessit.neurofunky.service"})
-@Import(value = {ConverterConfiguration.class})
+@ComponentScan(basePackages = {"com.glessit.neurofunky.service", "com.glessit.neurofunky.configuration.startup"})
+@Import(value = {ConverterConfiguration.class, NotificationConfiguration.class})
 public class RootConfiguration {
 
     @Bean
