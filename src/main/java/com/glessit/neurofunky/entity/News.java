@@ -7,8 +7,12 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "\"NFK_NEWS\"")
@@ -49,6 +53,10 @@ public class News extends AbstractPersistable<Long> implements java.io.Serializa
     @Setter
     @Column
     private String image;
+
+    @OneToMany
+    @JoinColumn(name="NEWS_ID")
+    private Set<Like> likes = new HashSet<>();
 
     private News() {}
 

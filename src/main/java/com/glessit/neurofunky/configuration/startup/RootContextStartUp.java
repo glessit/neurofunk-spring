@@ -16,7 +16,7 @@ import static com.glessit.neurofunky.util.LogUtil.debug;
 @Slf4j
 public class RootContextStartUp implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
+    @Autowired(required = false)
     private TelegramBot telegramBot;
 
     {
@@ -24,7 +24,7 @@ public class RootContextStartUp implements ApplicationListener<ContextRefreshedE
     }
 
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        if (event.getApplicationContext().getParent() == null) {
+        if (event.getApplicationContext().getParent() == null && telegramBot != null) {
             TelegramBotsApi botsApi = new TelegramBotsApi();
             try {
                 botsApi.registerBot(telegramBot);
