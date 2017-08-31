@@ -12,6 +12,7 @@ import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,7 +53,7 @@ public class NewsResource {
         return conversionService.convert(newsService.getNewsById(newsId), NewsDto.class);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.PUT)
+    @RequestMapping(value = "/create", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize(value = "hasRole('glessit')")
     public NewsDto createNews(@RequestBody NewsDto news) {
         log.info("Create news. Title: {}", news.getTitle());
