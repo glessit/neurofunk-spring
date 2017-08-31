@@ -11,13 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "\"NFK_LIKE\"")
-public class Like extends AbstractPersistable<Long> implements java.io.Serializable {
+public class Like extends AbstractPersistable<Long> implements Serializable {
 
     @Column(nullable = false)
     private LocalDateTime created = LocalDateTime.now();
@@ -31,4 +32,9 @@ public class Like extends AbstractPersistable<Long> implements java.io.Serializa
     private LikeType type;
 
     public Like() {}
+
+    public Like(User user, LikeType type) {
+        this.user = user;
+        this.type = type;
+    }
 }

@@ -42,4 +42,9 @@ public class NewsService implements INewsService {
         if (null == news) throw new NotFoundException(format("News with id [%s] not found!", id));
         return news;
     }
+
+    @Override
+    public News save(News item) {
+        return newsRepository.save(item);
+    }
 }

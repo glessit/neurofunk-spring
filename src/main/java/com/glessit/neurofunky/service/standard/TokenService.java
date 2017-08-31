@@ -49,4 +49,10 @@ public class TokenService implements ITokenService {
         }
         return false;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public User getUserByToken(String authToken) {
+        return tokenRepository.findOneByToken(Long.valueOf(authToken)).getUser();
+    }
 }

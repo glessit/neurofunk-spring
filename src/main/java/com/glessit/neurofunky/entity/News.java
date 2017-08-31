@@ -10,13 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "\"NFK_NEWS\"")
-public class News extends AbstractPersistable<Long> implements java.io.Serializable {
+public class News extends AbstractPersistable<Long> implements Serializable, Likeable {
 
     @Getter
     @Setter
@@ -54,9 +55,14 @@ public class News extends AbstractPersistable<Long> implements java.io.Serializa
     @Column
     private String image;
 
+    @Getter
     @OneToMany
     @JoinColumn(name="NEWS_ID")
     private Set<Like> likes = new HashSet<>();
+
+    public void addLike(Like like) {
+        likes.add(like);
+    }
 
     private News() {}
 
@@ -76,5 +82,12 @@ public class News extends AbstractPersistable<Long> implements java.io.Serializa
 
     public final static News create() {
         return new News();
+    }
+
+    @Override
+    public Boolean isUserHasLike(Long userId) {
+        return Boolean.valueOf(
+                this.getLikes().stream().filter(like -> like.getUser().getId() == userId).findFirst().isPresent()
+        );
     }
 }

@@ -22,4 +22,11 @@ public interface ITokenService {
      * @param requestToken
      */
     boolean isTokenValid(Long requestToken);
+
+    /**
+     * Get user by token
+     * @param authToken
+     * @return
+     */
+    User getUserByToken(String authToken);
 }

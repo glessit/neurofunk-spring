@@ -11,4 +11,5 @@ public interface INewsService {
     News create(NewsDto news);
     Page<News> fetchNews(Pageable pageable);
     News getNewsById(Long id) throws NotFoundException;
+    News save(News item);
 }

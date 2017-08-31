@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- Create NFK_LIKE_TYPE table -->
+    <changeSet author="glessit" id="table-nfk-like-type" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable schemaName="public" tableName="NFK_LIKE_TYPE">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="table-nfk-like-type-primary-key" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_like_type"
+                schemaName="public"
+                tableName="NFK_LIKE_TYPE" />
+    </changeSet>
+
+    <changeSet author="glessit" id="table-nfk-like-type-pkey-index" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_LIKE_TYPE_pkey" tableName="NFK_LIKE_TYPE" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Insert types -->
+
+    <changeSet author="glessit" id="table-nfk-like-type-insert-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert schemaName="public" tableName="NFK_LIKE_TYPE">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="type" type="VARCHAR(255)" value="NEWS" />
+        </insert>
+    </changeSet>
+
+    <!-- Create NFK_LIKE table -->
+    <changeSet author="glessit" id="table-name-nfk-like" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable schemaName="public" tableName="NFK_LIKE">
+            <column name="id" type="BIGINT" valueNumeric="nextval('hibernate_sequence')"/>
+            <column name="created" type="TIMESTAMP(6) WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="glessit" id="table-name-nfk-like-primary-key" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_like"
+                schemaName="public"
+                tableName="NFK_LIKE" />
+    </changeSet>
+
+    <changeSet author="glessit" id="table-name-nfk-like-index" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="NFK_LIKE_pkey" tableName="NFK_LIKE" unique="true" schemaName="public">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Add news_id filed to NFK_LIKE table -->
+    <changeSet author="glessit" id="table-name-nfk-news-add-like-id-field" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addColumn schemaName="public"
+                   tableName="NFK_LIKE">
+            <column name="news_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

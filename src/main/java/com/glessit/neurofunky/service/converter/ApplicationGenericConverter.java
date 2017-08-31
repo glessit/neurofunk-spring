@@ -35,7 +35,7 @@ public class ApplicationGenericConverter implements GenericConverter {
             NewsDto dto = new NewsDto();
             News source2 = (News) source;
             dto.setId(source2.getId());
-            dto.setCreated(source2.getCreated());
+//            dto.setCreated(source2.getCreated());
             dto.setVisible(source2.isVisible());
             dto.setShortNews(source2.isShortNews());
             dto.setNews(source2.getNews());

@@ -1,10 +1,7 @@
 package com.glessit.neurofunky.web.rest.dto;
 
 import com.glessit.neurofunky.entity.News;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -16,8 +13,7 @@ public class NewsDto {
     private Long id;
 
     @Getter
-    @Setter
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
 
     @Setter
     private Boolean visible;
@@ -56,7 +52,7 @@ public class NewsDto {
 
         NewsDto newsItem = create();
         newsItem.setId(news.getId());
-        newsItem.setCreated(news.getCreated());
+//        newsItem.setCreated(news.getCreated());
         newsItem.setVisible(news.isVisible());
         newsItem.setShortNews(news.isShortNews());
         newsItem.setNews(news.getNews());
